@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="Role" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="role.aspx.cs" Inherits="About" %>
-
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <!-- Page Content -->
     <div id="page-wrapper">
@@ -9,7 +8,7 @@
                     <h4 class="page-title">Danh sách quyền</h4>
                 </div>
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12 text-right">
-                    <a href="role-add.jsp" class="btn btn-sm btn-success">Thêm mới</a>
+                    <a href="role-add.aspx" class="btn btn-sm btn-success">Thêm mới</a>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -18,27 +17,33 @@
                 <div class="col-sm-12">
                     <div class="white-box">
                         <div class="table-responsive">
-                            <table class="table" id="example">
-                                <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Tên Quyền</th>
-                                    <th>Mô Tả</th>
-                                    <th>Hành Động</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>ADMIN</td>
-                                        <td>Quản trị viên</td>
-                                        <td>
+                            <asp:GridView ID="GridView2" runat="server" CssClass="table" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource2">
+                                <Columns>
+                                    <asp:BoundField DataField="id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                                    <asp:BoundField DataField="name" HeaderText="Name" SortExpression="name" />
+                                    <asp:BoundField DataField="description" HeaderText="Description" SortExpression="description" />
+                                    <asp:TemplateField HeaderText="Action">
+                                        <ItemTemplate>
                                             <a href="#" class="btn btn-sm btn-primary">Sửa</a>
-                                            <a href="#" class="btn btn-sm btn-danger">Xóa</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                            <asp:Button ID="btnDelete" runat="server" Text="Xóa" CssClass="btnbtn btn-sm btn-danger" OnClick="btnDelete_Click" CommandArgument='<%# Eval("id") %>'  />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    </Columns>
+                            </asp:GridView>
+                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString %>" DeleteCommand="DELETE FROM [Role] WHERE [id] = @id" InsertCommand="INSERT INTO [Role] ([name], [description]) VALUES (@name, @description)" SelectCommand="SELECT * FROM [Role]" UpdateCommand="UPDATE [Role] SET [name] = @name, [description] = @description WHERE [id] = @id">
+                                <DeleteParameters>
+                                    <asp:Parameter Name="id" Type="Int32" />
+                                </DeleteParameters>
+                                <InsertParameters>
+                                    <asp:Parameter Name="name" Type="String" />
+                                    <asp:Parameter Name="description" Type="String" />
+                                </InsertParameters>
+                                <UpdateParameters>
+                                    <asp:Parameter Name="name" Type="String" />
+                                    <asp:Parameter Name="description" Type="String" />
+                                    <asp:Parameter Name="id" Type="Int32" />
+                                </UpdateParameters>
+                            </asp:SqlDataSource>
                         </div>
                     </div>
                 </div>
