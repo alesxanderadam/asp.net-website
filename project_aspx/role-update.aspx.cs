@@ -20,7 +20,7 @@ public partial class role_update :  System.Web.UI.Page
 
     protected void getRoleById(int roleId)
     {
-        using (SqlConnection connection = new SqlConnection("Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
+        using (SqlConnection connection = new SqlConnection("Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
         {
             connection.Open();
 
@@ -49,7 +49,7 @@ public partial class role_update :  System.Web.UI.Page
         int roleId = getRoleIdFromParams();
 
         // Kết nối đến cơ sở dữ liệu
-        using (SqlConnection connection = new SqlConnection("Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
+        using (SqlConnection connection = new SqlConnection("Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
         {
             connection.Open();
 

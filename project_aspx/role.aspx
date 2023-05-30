@@ -20,8 +20,8 @@
                             <asp:GridView ID="GridView2" runat="server" CssClass="table" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource2">
                                 <Columns>
                                     <asp:BoundField DataField="id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-                                    <asp:BoundField DataField="name" HeaderText="Name" SortExpression="name" />
-                                    <asp:BoundField DataField="description" HeaderText="Description" SortExpression="description" />
+                                    <asp:BoundField DataField="name" HeaderText="Tên quyền" SortExpression="name" />
+                                    <asp:BoundField DataField="description" HeaderText="Mô tả" SortExpression="description" />
                                     <asp:TemplateField HeaderText="Action">
                                         <ItemTemplate>
                                             <asp:Button CssClass="btn btn-sm btn-primary" runat="server" Text="Sửa" OnClick="Unnamed_Click" CommandArgument='<%# Eval("id") %>'  />
@@ -30,7 +30,7 @@
                                     </asp:TemplateField>
                                     </Columns>
                             </asp:GridView>
-                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString %>" DeleteCommand="DELETE FROM [Role] WHERE [id] = @id" InsertCommand="INSERT INTO [Role] ([name], [description]) VALUES (@name, @description)" SelectCommand="SELECT * FROM [Role]" UpdateCommand="UPDATE [Role] SET [name] = @name, [description] = @description WHERE [id] = @id">
+                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString2 %>" DeleteCommand="DELETE FROM [Role] WHERE [id] = @id" InsertCommand="INSERT INTO [Role] ([name], [description]) VALUES (@name, @description)" SelectCommand="SELECT * FROM [Role]" UpdateCommand="UPDATE [Role] SET [name] = @name, [description] = @description WHERE [id] = @id">
                                 <DeleteParameters>
                                     <asp:Parameter Name="id" Type="Int32" />
                                 </DeleteParameters>
