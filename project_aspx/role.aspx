@@ -24,7 +24,7 @@
                                     <asp:BoundField DataField="description" HeaderText="Description" SortExpression="description" />
                                     <asp:TemplateField HeaderText="Action">
                                         <ItemTemplate>
-                                            <a href="#" class="btn btn-sm btn-primary">Sửa</a>
+                                            <asp:Button CssClass="btn btn-sm btn-primary" runat="server" Text="Sửa" OnClick="Unnamed_Click" CommandArgument='<%# Eval("id") %>'  />
                                             <asp:Button ID="btnDelete" runat="server" Text="Xóa" CssClass="btnbtn btn-sm btn-danger" OnClick="btnDelete_Click" CommandArgument='<%# Eval("id") %>'  />
                                         </ItemTemplate>
                                     </asp:TemplateField>

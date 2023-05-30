@@ -41,4 +41,13 @@ public partial class About : Page
             SqlDataSource2.DataBind();
         }
     }
+
+    protected void Unnamed_Click(object sender, EventArgs e)
+    {
+        Button btn = sender as Button;
+        string roleId = btn.CommandArgument;
+
+        // Chuyển đến trang role-update.aspx và truyền giá trị roleId qua QueryString
+        Response.Redirect("role-update.aspx?roleId=" + roleId);
+    }
 }
