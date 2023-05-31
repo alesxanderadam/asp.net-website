@@ -36,13 +36,13 @@
                                     <asp:BoundField DataField="role_id" HeaderText="Quyền" SortExpression="role_id" />
                                     <asp:TemplateField HeaderText="Ảnh đại diện">
                                         <ItemTemplate>
-                                            <asp:Image CssClass="avartar" ID="imgAvatar" runat="server" ImageUrl='<%# Eval("avartar") %>' />
+                                            <asp:Image CssClass="avartar" ID="imgAvatar" runat="server" ImageUrl='<%# ResolveUrl("~/Upload/Avartar/" + Eval("avartar"))%>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Thao tác">
                                         <ItemTemplate>
-                                             <asp:Button CssClass="btn btn-sm btn-primary" runat="server" Text="Sửa" CommandArgument='<%# Eval("id") %>'  />
-                                            <asp:Button ID="btnDelete" runat="server" Text="Xóa" CssClass="btnbtn btn-sm btn-danger" CommandArgument='<%# Eval("id") %>'  />
+                                             <asp:Button ID="btnUpdateUser" CssClass="btn btn-sm btn-primary mb-2" runat="server" Text="Sửa" OnClick="btnUpdateUse_Click" CommandArgument='<%# Eval("id") %>'  />
+                                            <asp:Button ID="btnDelete" runat="server" Text="Xóa" CssClass="btnbtn btn-sm btn-danger" OnClick="btnDelete_Click" CommandArgument='<%# Eval("id") %>'  />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -51,29 +51,6 @@
                                 <DeleteParameters>
                                     <asp:Parameter Name="id" Type="Int32" />
                                 </DeleteParameters>
-                                <InsertParameters>
-                                    <asp:Parameter Name="fullname" Type="String" />
-                                    <asp:Parameter Name="email" Type="String" />
-                                    <asp:Parameter Name="password" Type="String" />
-                                    <asp:Parameter Name="address" Type="String" />
-                                    <asp:Parameter Name="role_id" Type="Int32" />
-                                    <asp:Parameter Name="avartar" Type="String" />
-                                    <asp:Parameter Name="created_at" Type="DateTime" />
-                                    <asp:Parameter Name="updated_at" Type="DateTime" />
-                                    <asp:Parameter Name="deleted" Type="Int32" />
-                                </InsertParameters>
-                                <UpdateParameters>
-                                    <asp:Parameter Name="fullname" Type="String" />
-                                    <asp:Parameter Name="email" Type="String" />
-                                    <asp:Parameter Name="password" Type="String" />
-                                    <asp:Parameter Name="address" Type="String" />
-                                    <asp:Parameter Name="role_id" Type="Int32" />
-                                    <asp:Parameter Name="avartar" Type="String" />
-                                    <asp:Parameter Name="created_at" Type="DateTime" />
-                                    <asp:Parameter Name="updated_at" Type="DateTime" />
-                                    <asp:Parameter Name="deleted" Type="Int32" />
-                                    <asp:Parameter Name="id" Type="Int32" />
-                                </UpdateParameters>
                             </asp:SqlDataSource>
                         </div>
                     </div>

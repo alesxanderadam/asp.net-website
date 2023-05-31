@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="user-add.aspx.cs" Inherits="user_add" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="user-update.aspx.cs" Inherits="user_update" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
-    <!-- Page Content -->
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+     <!-- Page Content -->
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row bg-title">
@@ -62,8 +62,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <asp:Button Id="btnAddUser" runat="server" CssClass="btn btn-success" Text="Thêm mới" OnClick="btnAddUser_Click" />
-                                    <a href="user-table.html" class="btn btn-primary">Quay lại</a>
+                                    <asp:Button Id="btnUpdateUser" runat="server" CssClass="btn btn-success" Text="Sửa" OnClick="btnUpdateUser_Click" />
+                                    <a href="user.aspx" class="btn btn-primary">Quay lại</a>
                                 </div>
                             </div>
                         </div>
