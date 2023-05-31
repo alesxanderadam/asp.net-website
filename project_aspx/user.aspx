@@ -16,7 +16,7 @@
                     <h4 class="page-title">Danh sách thành viên</h4>
                 </div>
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12 text-right">
-                    <a href="" class="btn btn-sm btn-success">Thêm mới</a>
+                    <a href="user-add.aspx" class="btn btn-sm btn-success">Thêm mới</a>
                 </div>
 
                 <!-- /.col-lg-12 -->
@@ -28,15 +28,21 @@
                         <div class="table-responsive">
                             <asp:GridView ID="exampleGridView" runat="server" CssClass="table" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource1">
                                 <Columns>
-                                    <asp:BoundField DataField="id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-                                    <asp:BoundField DataField="fullname" HeaderText="Fullname" SortExpression="fullname" />
+                                    <asp:BoundField DataField="id" HeaderText="Mã số" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                                    <asp:BoundField DataField="fullname" HeaderText="Họ tên" SortExpression="fullname" />
                                     <asp:BoundField DataField="email" HeaderText="Email" SortExpression="email" />
-                                    <asp:BoundField DataField="password" HeaderText="Password" SortExpression="password" />
-                                    <asp:BoundField DataField="address" HeaderText="Address" SortExpression="address" />
-                                    <asp:BoundField DataField="role_id" HeaderText="Role" SortExpression="role_id" />
-                                    <asp:TemplateField HeaderText="Avartar">
+                                    <asp:BoundField DataField="password" HeaderText="Mật khẩu" SortExpression="password" />
+                                    <asp:BoundField DataField="address" HeaderText="Địa chỉ" SortExpression="address" />
+                                    <asp:BoundField DataField="role_id" HeaderText="Quyền" SortExpression="role_id" />
+                                    <asp:TemplateField HeaderText="Ảnh đại diện">
                                         <ItemTemplate>
                                             <asp:Image CssClass="avartar" ID="imgAvatar" runat="server" ImageUrl='<%# Eval("avartar") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Thao tác">
+                                        <ItemTemplate>
+                                             <asp:Button CssClass="btn btn-sm btn-primary" runat="server" Text="Sửa" CommandArgument='<%# Eval("id") %>'  />
+                                            <asp:Button ID="btnDelete" runat="server" Text="Xóa" CssClass="btnbtn btn-sm btn-danger" CommandArgument='<%# Eval("id") %>'  />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>

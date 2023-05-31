@@ -19,10 +19,10 @@
                         <div class="table-responsive">
                             <asp:GridView ID="GridView2" runat="server" CssClass="table" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource2">
                                 <Columns>
-                                    <asp:BoundField DataField="id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-                                    <asp:BoundField DataField="name" HeaderText="Name" SortExpression="name" />
-                                    <asp:BoundField DataField="description" HeaderText="Description" SortExpression="description" />
-                                    <asp:TemplateField HeaderText="Action">
+                                    <asp:BoundField DataField="id" HeaderText="Mã số" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                                    <asp:BoundField DataField="name" HeaderText="Tên quyền" SortExpression="name" />
+                                    <asp:BoundField DataField="description" HeaderText="Chú thích" SortExpression="description" />
+                                    <asp:TemplateField HeaderText="Thao tác">
                                         <ItemTemplate>
                                             <asp:Button CssClass="btn btn-sm btn-primary" runat="server" Text="Sửa" OnClick="Unnamed_Click" CommandArgument='<%# Eval("id") %>'  />
                                             <asp:Button ID="btnDelete" runat="server" Text="Xóa" CssClass="btnbtn btn-sm btn-danger" OnClick="btnDelete_Click" CommandArgument='<%# Eval("id") %>'  />
