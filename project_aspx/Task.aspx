@@ -19,7 +19,7 @@
                 <div class="col-sm-12">
                     <div class="white-box">
                         <div class="table-responsive">
-                            <asp:GridView ID="TaskGridView" runat="server" CssClass="table" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource1">
+                            <asp:GridView ID="TaskGridView" runat="server" CssClass="table" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource1" OnRowDataBound="TaskGridView_RowDataBound">
                                 <Columns>
                                     <asp:BoundField DataField="id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
                                     <asp:BoundField DataField="name" HeaderText="Tên công việc" SortExpression="name" />
@@ -28,8 +28,8 @@
                                     <asp:BoundField DataField="status" HeaderText="Trạng thái" SortExpression="status" />
                                     <asp:TemplateField HeaderText="Công cụ">
                                         <ItemTemplate>
-                                            <asp:Button CssClass="btn btn-sm btn-primary" runat="server" Text="Sửa"  CommandArgument='<%# Eval("id") %>'  />
-                                            <asp:Button ID="btnDelete" runat="server" Text="Xóa" CssClass="btnbtn btn-sm btn-danger" CommandArgument='<%# Eval("id") %>'  />
+                                            <asp:Button CssClass="btn btn-sm btn-primary" runat="server" Text="Sửa" OnClick="Unnamed_Click" CommandArgument='<%# Eval("id") %>'  />
+                                            <asp:Button ID="btnDelete" runat="server" Text="Xóa" CssClass="btnbtn btn-sm btn-danger" OnClick="btnDelete_Click" CommandArgument='<%# Eval("id") %>'  />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
