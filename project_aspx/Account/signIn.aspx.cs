@@ -41,7 +41,7 @@ public partial class Account_signIn : System.Web.UI.Page
                 {
                     Cookie cookie = new Cookie();
                     cookie.SetCookie(Response, "Email", reader.GetString(2), 1);
-                    cookie.SetCookie(Response, "Role_id", reader.GetString(5), 1);
+                    //cookie.SetCookie(Response, "Role_id", reader.GetString(5), 1);
                 }
                 else
                 {

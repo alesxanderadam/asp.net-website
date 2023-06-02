@@ -41,8 +41,8 @@
                             <a href="#">Quên mật khẩu ?</a>
                         </div>
 
-                        <button type="submit">Đăng nhập</button>
-                        <asp:Button ID="submitLogin" runat="server" OnClick="submitLogin_Click" />
+                        <%--<button type="submit">Đăng nhập</button>--%>
+                        <asp:Button ID="submitLogin" runat="server" OnClick="submitLogin_Click" Text="Đăng nhập" />
 
                     </form>
                 </div>
