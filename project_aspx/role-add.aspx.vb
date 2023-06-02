@@ -7,7 +7,7 @@ Partial Class role_add
         Dim roleName As String = txtRoleName.Text
         Dim description As String = txtDesc.Text
 
-        Dim connectionString As String = "Data Source=MSI\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"
+        Dim connectionString As String = "Data Source=TIMNGUYEN\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"
 
         ' Tạo kết nối
         Using connection As New SqlConnection(connectionString)

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="user.aspx.cs" Inherits="Contact" %>
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">\
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
     <style>
     .avartar{
@@ -47,7 +47,7 @@
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString %>" DeleteCommand="DELETE FROM [User] WHERE [id] = @id" InsertCommand="INSERT INTO [User] ([fullname], [email], [password], [address], [role_id], [avartar], [created_at], [updated_at], [deleted]) VALUES (@fullname, @email, @password, @address, @role_id, @avartar, @created_at, @updated_at, @deleted)" SelectCommand="SELECT [User].id, [User].fullname, [User].email, [User].password, [User].address, Role.name as role_id, [User].avartar FROM [User] INNER JOIN Role ON [User].role_id = Role.id" UpdateCommand="UPDATE [User] SET [fullname] = @fullname, [email] = @email, [password] = @password, [address] = @address, [role_id] = @role_id, [avartar] = @avartar, [created_at] = @created_at, [updated_at] = @updated_at, [deleted] = @deleted WHERE [id] = @id">
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString3 %>" DeleteCommand="DELETE FROM [User] WHERE [id] = @id" InsertCommand="INSERT INTO [User] ([fullname], [email], [password], [address], [role_id], [avartar], [deleted], [created_at], [updated_at]) VALUES (@fullname, @email, @password, @address, @role_id, @avartar, @deleted, @created_at, @updated_at)" SelectCommand="SELECT [User].id, [User].fullname, [User].email, [User].password, [User].address, Role.name as role_id, [User].avartar FROM [User] INNER JOIN Role ON [User].role_id = Role.id" UpdateCommand="UPDATE [User] SET [fullname] = @fullname, [email] = @email, [password] = @password, [address] = @address, [role_id] = @role_id, [avartar] = @avartar, [deleted] = @deleted, [created_at] = @created_at, [updated_at] = @updated_at WHERE [id] = @id">
                                 <DeleteParameters>
                                     <asp:Parameter Name="id" Type="Int32" />
                                 </DeleteParameters>
