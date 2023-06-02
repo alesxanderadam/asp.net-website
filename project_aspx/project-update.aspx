@@ -31,7 +31,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <asp:Button ID="btnUpdate" runat="server" Text="Sửa" CssClass="btn btn-success" OnClick="btnUpdate_Click" />
-                                        <a href="role.aspx" class="btn btn-primary">Quay lại</a>
+                                        <a href="project.aspx" class="btn btn-primary">Quay lại</a>
                                     </div>
                                 </div>
                             </div>

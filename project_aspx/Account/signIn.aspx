@@ -10,43 +10,45 @@
 
 </head>
 <body>
-    
-          <div class="parent clearfix">
-    <div class="bg-illustration">
-      <img src="https://i.ibb.co/Pcg0Pk1/logo.png" alt="logo">
 
-      <div class="burger-btn">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    <div class="parent clearfix">
+        <div class="bg-illustration">
+            <img src="https://i.ibb.co/Pcg0Pk1/logo.png" alt="logo">
 
-    </div>
-    
-    <div class="login">
-      <div class="container">
-        <h1>Login to access to<br />your account</h1>
-    
-        <div class="login-form">
-          <form id="formLogin" runat="server">
-            <input type="email" placeholder="E-mail Address">
-            <input type="password" placeholder="Password">
-
-            <div class="remember-form">
-              <input type="checkbox">
-              <span>Remember me</span>
-            </div>
-            <div class="forget-pass">
-              <a href="#">Forgot Password ?</a>
+            <div class="burger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
 
-            <button type="submit">LOG-IN</button>
-
-          </form>
         </div>
-    
-      </div>
-      </div>
-  </div>
+
+        <div class="login">
+            <div class="container">
+                <h1>Đăng nhập để<br />
+                    sử dụng tài khoản</h1>
+
+                <div class="login-form">
+                    <form id="formLogin" runat="server">
+                        <asp:TextBox ID="Email" runat="server" type="email" placeholder="Nhập email" />
+                        <asp:TextBox ID="Password" runat="server" placeholder="****" type="password" />
+
+                        <div class="remember-form">
+                            <asp:TextBox ID="rememberMe" runat="server" type="checkbox" />
+                            <span>Ghi nhớ tôi</span>
+                        </div>
+                        <div class="forget-pass">
+                            <a href="#">Quên mật khẩu ?</a>
+                        </div>
+
+                        <button type="submit">Đăng nhập</button>
+                        <asp:Button ID="submitLogin" runat="server" OnClick="submitLogin_Click" />
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>

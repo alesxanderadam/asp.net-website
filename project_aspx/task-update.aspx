@@ -27,32 +27,6 @@
                                     <div class="col-md-12">
                                         <asp:DropDownList type="text" ID="cboUserName" runat="server" placeholder="Nhập tên người dùng" CssClass="form-control form-control-line" DataSourceID="SqlDataSource1" DataTextField="fullname" DataValueField="id"></asp:DropDownList>
                                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString2 %>" DeleteCommand="DELETE FROM [User] WHERE [id] = @id" InsertCommand="INSERT INTO [User] ([fullname], [email], [password], [address], [role_id], [avartar], [deleted], [created_at], [updated_at]) VALUES (@fullname, @email, @password, @address, @role_id, @avartar, @deleted, @created_at, @updated_at)" SelectCommand="SELECT * FROM [User]" UpdateCommand="UPDATE [User] SET [fullname] = @fullname, [email] = @email, [password] = @password, [address] = @address, [role_id] = @role_id, [avartar] = @avartar, [deleted] = @deleted, [created_at] = @created_at, [updated_at] = @updated_at WHERE [id] = @id">
-                                            <DeleteParameters>
-                                                <asp:Parameter Name="id" Type="Int32" />
-                                            </DeleteParameters>
-                                            <InsertParameters>
-                                                <asp:Parameter Name="fullname" Type="String" />
-                                                <asp:Parameter Name="email" Type="String" />
-                                                <asp:Parameter Name="password" Type="String" />
-                                                <asp:Parameter Name="address" Type="String" />
-                                                <asp:Parameter Name="role_id" Type="Int32" />
-                                                <asp:Parameter Name="avartar" Type="String" />
-                                                <asp:Parameter Name="deleted" Type="Int32" />
-                                                <asp:Parameter Name="created_at" Type="DateTime" />
-                                                <asp:Parameter Name="updated_at" Type="DateTime" />
-                                            </InsertParameters>
-                                            <UpdateParameters>
-                                                <asp:Parameter Name="fullname" Type="String" />
-                                                <asp:Parameter Name="email" Type="String" />
-                                                <asp:Parameter Name="password" Type="String" />
-                                                <asp:Parameter Name="address" Type="String" />
-                                                <asp:Parameter Name="role_id" Type="Int32" />
-                                                <asp:Parameter Name="avartar" Type="String" />
-                                                <asp:Parameter Name="deleted" Type="Int32" />
-                                                <asp:Parameter Name="created_at" Type="DateTime" />
-                                                <asp:Parameter Name="updated_at" Type="DateTime" />
-                                                <asp:Parameter Name="id" Type="Int32" />
-                                            </UpdateParameters>
                                         </asp:SqlDataSource>
                                     </div>
                                 </div>

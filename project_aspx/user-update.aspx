@@ -51,7 +51,7 @@
                                         DataTextField="name"
                                         DataValueField="id">
                                     </asp:DropDownList>
-                                    <asp:SqlDataSource ID="DataSourceRole" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString %>" SelectCommand="SELECT [id], [name] FROM [Role]"></asp:SqlDataSource>
+                                    <asp:SqlDataSource ID="DataSourceRole" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_Admin %>" SelectCommand="SELECT [id], [name] FROM [Role]"></asp:SqlDataSource>
                                 </div>
                             </div>
                             <div class="form-group">
