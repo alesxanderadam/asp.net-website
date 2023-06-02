@@ -17,7 +17,7 @@ public partial class project_add : System.Web.UI.Page
     {
         string prjName = txtPrjName.Text;
         string desc = txtDesc.Text;
-        string connectionString = "Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True";
+        string connectionString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True";
 
         SqlConnection connection = new SqlConnection(connectionString);
         connection.Open();

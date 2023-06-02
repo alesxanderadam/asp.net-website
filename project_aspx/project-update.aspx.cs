@@ -19,7 +19,7 @@ public partial class project_update : System.Web.UI.Page
 
     protected void getPrjById(int prjId)
     {
-        using (SqlConnection connection = new SqlConnection("Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
+        using (SqlConnection connection = new SqlConnection("Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
         {
             connection.Open();
 
@@ -62,7 +62,7 @@ public partial class project_update : System.Web.UI.Page
         int prjId = getPrjIdFromParams();
 
         // Kết nối đến cơ sở dữ liệu
-        using (SqlConnection connection = new SqlConnection("Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
+        using (SqlConnection connection = new SqlConnection("Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
         {
             connection.Open();
 

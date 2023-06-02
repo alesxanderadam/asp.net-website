@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Task" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Task.aspx.cs" Inherits="Task" %>
+﻿<%@ Page Title="Task" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="task.aspx.cs" Inherits="Task" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" Runat="Server">
     <!-- Page Content -->
@@ -21,20 +21,14 @@
                         <div class="table-responsive">
                             <asp:GridView ID="TaskGridView" runat="server" CssClass="table" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource1" OnRowDataBound="TaskGridView_RowDataBound">
                                 <Columns>
-                                    <asp:BoundField DataField="id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-                                    <asp:BoundField DataField="name" HeaderText="Tên công việc" SortExpression="name" />
-                                    <asp:BoundField DataField="project_id" HeaderText="Dự án" SortExpression="project_id" />
-                                    <asp:BoundField DataField="user_id" HeaderText="Người làm" SortExpression="user_id" />
-                                    <asp:BoundField DataField="status" HeaderText="Trạng thái" SortExpression="status" />
-                                    <asp:TemplateField HeaderText="Công cụ">
-                                        <ItemTemplate>
-                                            <asp:Button CssClass="btn btn-sm btn-primary" runat="server" Text="Sửa" OnClick="Unnamed_Click" CommandArgument='<%# Eval("id") %>'  />
-                                            <asp:Button ID="btnDelete" runat="server" Text="Xóa" CssClass="btnbtn btn-sm btn-danger" OnClick="btnDelete_Click" CommandArgument='<%# Eval("id") %>'  />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
+                                    <asp:BoundField DataField="user_id" HeaderText="user_id" SortExpression="user_id" />
+                                    <asp:BoundField DataField="project_id" HeaderText="project_id" SortExpression="project_id" />
+                                    <asp:BoundField DataField="status" HeaderText="status" SortExpression="status" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString4 %>" DeleteCommand="DELETE FROM [Task] WHERE [id] = @id" InsertCommand="INSERT INTO [Task] ([name], [project_id], [user_id], [created_at], [updated_at], [status]) VALUES (@name, @project_id, @user_id, @created_at, @updated_at, @status)" SelectCommand="SELECT [Task].[id], [Task].[name], [User].fullname AS user_id, [Project].[name] AS project_id, [Task].[status] FROM Task INNER JOIN [User] ON Task.user_id = [User].[id] INNER JOIN Project ON Task.project_id = Project.id;" UpdateCommand="UPDATE [Task] SET [name] = @name, [project_id] = @project_id, [user_id] = @user_id, [created_at] = @created_at, [updated_at] = @updated_at, [status] = @status WHERE [id] = @id">
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_Admin %>" DeleteCommand="DELETE FROM [Task] WHERE [id] = @id" InsertCommand="INSERT INTO [Task] ([name], [project_id], [user_id], [created_at], [updated_at], [status]) VALUES (@name, @project_id, @user_id, @created_at, @updated_at, @status)" SelectCommand="SELECT [Task].[id], [Task].[name], [User].fullname AS user_id, [Project].[name] AS project_id, [Task].[status] FROM Task INNER JOIN [User] ON Task.user_id = [User].[id] INNER JOIN Project ON Task.project_id = Project.id;" UpdateCommand="UPDATE [Task] SET [name] = @name, [project_id] = @project_id, [user_id] = @user_id, [created_at] = @created_at, [updated_at] = @updated_at, [status] = @status WHERE [id] = @id">
                                 <DeleteParameters>
                                     <asp:Parameter Name="id" Type="Int32" />
                                 </DeleteParameters>

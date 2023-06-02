@@ -19,7 +19,7 @@ public partial class task_update : System.Web.UI.Page
 
     protected void getTaskById(int taskId)
     {
-        using (SqlConnection connection = new SqlConnection("Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
+        using (SqlConnection connection = new SqlConnection("Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
         {
             connection.Open();
 
@@ -69,7 +69,7 @@ public partial class task_update : System.Web.UI.Page
         int TaskId = getTaskIdFromParams();
 
         // Kết nối đến cơ sở dữ liệu
-        using (SqlConnection connection = new SqlConnection("Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
+        using (SqlConnection connection = new SqlConnection("Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
         {
             connection.Open();
 

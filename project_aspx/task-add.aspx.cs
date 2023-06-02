@@ -20,7 +20,7 @@ public partial class task_add : System.Web.UI.Page
         string user_id = cboUserName.Text;
         string prj_id = cboPrjName.Text;
         string status = cboStatus.Text;
-        string connectionString = "Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True";
+        string connectionString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True";
 
         SqlConnection connection = new SqlConnection(connectionString);
         connection.Open();

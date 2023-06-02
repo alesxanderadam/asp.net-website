@@ -32,7 +32,7 @@
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString5 %>" DeleteCommand="DELETE FROM [Project] WHERE [id] = @id" InsertCommand="INSERT INTO [Project] ([name], [description], [created_at], [updated_at]) VALUES (@name, @description, @created_at, @updated_at)" SelectCommand="SELECT * FROM [Project]" UpdateCommand="UPDATE [Project] SET [name] = @name, [description] = @description, [created_at] = @created_at, [updated_at] = @updated_at WHERE [id] = @id">
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_Admin %>" DeleteCommand="DELETE FROM [Project] WHERE [id] = @id" InsertCommand="INSERT INTO [Project] ([name], [description], [created_at], [updated_at]) VALUES (@name, @description, @created_at, @updated_at)" SelectCommand="SELECT * FROM [Project]" UpdateCommand="UPDATE [Project] SET [name] = @name, [description] = @description, [created_at] = @created_at, [updated_at] = @updated_at WHERE [id] = @id">
                                 <DeleteParameters>
                                     <asp:Parameter Name="id" Type="Int32" />
                                 </DeleteParameters>
