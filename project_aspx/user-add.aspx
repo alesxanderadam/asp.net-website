@@ -63,7 +63,7 @@
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <asp:Button Id="btnAddUser" runat="server" CssClass="btn btn-success" Text="Thêm mới" OnClick="btnAddUser_Click" />
-                                    <a href="user-table.html" class="btn btn-primary">Quay lại</a>
+                                    <a href="user.aspx" class="btn btn-primary">Quay lại</a>
                                 </div>
                             </div>
                         </div>

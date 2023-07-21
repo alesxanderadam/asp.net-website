@@ -69,7 +69,6 @@ public partial class user_update : System.Web.UI.Page
         string address = txtAddress.Text;
         string role_id = DDLRole.Text;
         int userId = getUserIdParam();
-        string avartar = null;
 
         string queryUpdateHaveImage = " UPDATE [User] SET [fullname] = @fullname, [email] = @email, [password] = @password, [address] = @address, [role_id] = @role_id, [avartar] = @avartar, [updated_at] = @updated_at WHERE id = @userId ";
         string queryUpdate = "UPDATE [User] SET [fullname] = @fullname, [email] = @email, [password] = @password, [address] = @address, [role_id] = @role_id, [updated_at] = @updated_at WHERE id = @userId ";
