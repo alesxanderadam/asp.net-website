@@ -13,9 +13,6 @@ public partial class Task : System.Web.UI.Page
     {
 
     }
-
-    
-
     protected void btnDelete_Click(object sender, EventArgs e)
     {
         Button btnDelete = sender as Button;
@@ -50,24 +47,6 @@ public partial class Task : System.Web.UI.Page
         Button btn = sender as Button;
         string taskId = btn.CommandArgument;
 
-        // Chuyển đến trang role-update.aspx và truyền giá trị roleId qua QueryString
-        Response.Redirect("task-update.aspx?taskid=" + taskId);
-    }
-
-    protected void TaskGridView_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-        if (e.Row.RowType == DataControlRowType.DataRow)
-        {
-            string status = DataBinder.Eval(e.Row.DataItem, "status").ToString();
-
-            if (status == "0")
-            {
-                e.Row.Cells[4].Text = "Chưa hoàn thành";
-            }
-            else if (status == "1")
-            {
-                e.Row.Cells[4].Text = "Đã hoàn thành";
-            }
-        }
+        Response.Redirect("task-update.aspx?taskId=" + taskId);
     }
 }

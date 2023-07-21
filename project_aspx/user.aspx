@@ -48,32 +48,6 @@
                                 </Columns>
                             </asp:GridView>
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_Admin %>" DeleteCommand="DELETE FROM [User] WHERE [id] = @id" InsertCommand="INSERT INTO [User] ([fullname], [email], [password], [address], [role_id], [avartar], [deleted], [created_at], [updated_at]) VALUES (@fullname, @email, @password, @address, @role_id, @avartar, @deleted, @created_at, @updated_at)" SelectCommand="SELECT [User].id, [User].fullname, [User].email, [User].password, [User].address, Role.name as role_id, [User].avartar FROM [User] INNER JOIN Role ON [User].role_id = Role.id" UpdateCommand="UPDATE [User] SET [fullname] = @fullname, [email] = @email, [password] = @password, [address] = @address, [role_id] = @role_id, [avartar] = @avartar, [deleted] = @deleted, [created_at] = @created_at, [updated_at] = @updated_at WHERE [id] = @id">
-                                <DeleteParameters>
-                                    <asp:Parameter Name="id" Type="Int32" />
-                                </DeleteParameters>
-                                <InsertParameters>
-                                    <asp:Parameter Name="fullname" />
-                                    <asp:Parameter Name="email" />
-                                    <asp:Parameter Name="password" />
-                                    <asp:Parameter Name="address" />
-                                    <asp:Parameter Name="role_id" />
-                                    <asp:Parameter Name="avartar" />
-                                    <asp:Parameter Name="deleted" />
-                                    <asp:Parameter Name="created_at" />
-                                    <asp:Parameter Name="updated_at" />
-                                </InsertParameters>
-                                <UpdateParameters>
-                                    <asp:Parameter Name="fullname" />
-                                    <asp:Parameter Name="email" />
-                                    <asp:Parameter Name="password" />
-                                    <asp:Parameter Name="address" />
-                                    <asp:Parameter Name="role_id" />
-                                    <asp:Parameter Name="avartar" />
-                                    <asp:Parameter Name="deleted" />
-                                    <asp:Parameter Name="created_at" />
-                                    <asp:Parameter Name="updated_at" />
-                                    <asp:Parameter Name="id" />
-                                </UpdateParameters>
                             </asp:SqlDataSource>
                         </div>
                     </div>
