@@ -37,8 +37,9 @@
                             <asp:TextBox ID="rememberMe" runat="server" type="checkbox" />
                             <span>Ghi nhớ tôi</span>
                         </div>
+                        
                         <div class="forget-pass">
-                            <a href="#">Quên mật khẩu ?</a>
+                            <a href="signUp.aspx">Đăng ký tài khoản </a>
                         </div>
 
                         <%--<button type="submit">Đăng nhập</button>--%>

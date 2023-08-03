@@ -50,6 +50,8 @@
                 <asp:scriptreference path="~/js/custom.min.js" />
                 <asp:scriptreference path="~/js/dashboard1.js" />
                 <asp:scriptreference path="~/plugins/bower_components/toast-master/js/jquery.toast.js" />
+                <asp:ScriptReference Path="//cdn.ckeditor.com/4.22.1/full/ckeditor.js" />
+                <asp:ScriptReference Path="~/lib/ckfinder/ckfinder.js" />
             </scripts>
         </asp:scriptmanager>
     <!-- Preloader -->
@@ -93,6 +95,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="profile.html">Thông tin cá nhân</a></li>
+                                <li><a href="../home-view/home.aspx">Tới trang web</a></li>
                                 <li><a href="#">Thống kê công việc</a></li>
                                 <li class="divider"></li>
                                 <li><a href="#">Đăng xuất</a></li>
@@ -130,8 +133,12 @@
                                 aria-hidden="true"></i><span class="hide-menu">Công việc</span></a>
                     </li>
                     <li>
-                        <a href="task.aspx" class="waves-effect"><i class="fa fa-columns fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Quản lý công việc</span></a>
+                        <a href="category.aspx" class="waves-effect"><i class="fa fa-columns fa-fw"
+                                aria-hidden="true"></i><span class="hide-menu">Danh mục</span></a>
+                    </li>
+                    <li>
+                        <a href="blog.aspx" class="waves-effect"><i class="fa fa-newspaper-o fa-fw"
+                                aria-hidden="true"></i><span class="hide-menu">Bảng tin</span></a>
                     </li>
                     <%--<li>
                         <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw"
@@ -151,6 +158,7 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
     </form>
+<%--    <script src="//cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>--%>
    
 </body>
 </html>

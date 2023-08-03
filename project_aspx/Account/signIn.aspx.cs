@@ -27,7 +27,7 @@ public partial class Account_signIn : System.Web.UI.Page
         string email = Email.Text;
         string password = Password.Text;
 
-        using (SqlConnection connection = new SqlConnection("Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
+        using (SqlConnection connection = new SqlConnection("Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
         {
             connection.Open();
             string query = "SELECT * FROM [User] WHERE [email] = @email and [password] = @password";
@@ -45,7 +45,7 @@ public partial class Account_signIn : System.Web.UI.Page
                 }
                 else
                 {
-                    Response.Redirect("~/account/signin");
+                    Response.Redirect("~/account/signIn");
                 }
 
                 reader.Close();

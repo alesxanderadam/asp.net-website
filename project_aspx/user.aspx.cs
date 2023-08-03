@@ -31,7 +31,7 @@ public partial class Contact : Page
         Button btnDelete = sender as Button;
         int id = Convert.ToInt32(btnDelete.CommandArgument);
 
-        string connectionString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True";
+        string connectionString = "Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True";
 
         // Tạo kết nối
         using (SqlConnection connection = new SqlConnection(connectionString))

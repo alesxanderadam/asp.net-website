@@ -29,7 +29,7 @@ public partial class task_detail : System.Web.UI.Page
         int statusIdForColumn1 = 0; // Khởi tạo giá trị mặc định
 
         // Chuỗi kết nối tới cơ sở dữ liệu (thay đổi theo cấu hình của bạn)
-        string connectionString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True;";
+        string connectionString = "Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True;";
 
         // Câu truy vấn SQL để lấy giá trị StatusId từ cơ sở dữ liệu (thay đổi theo cấu trúc cơ sở dữ liệu của bạn)
         string query = "SELECT [status_id] FROM [Task_Detail];";
