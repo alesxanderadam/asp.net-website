@@ -19,7 +19,7 @@ public partial class user_update : System.Web.UI.Page
     }
     protected void getUserById(int userId)
     {
-        using (SqlConnection connection = new SqlConnection("Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
+        using (SqlConnection connection = new SqlConnection("Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
         {
             connection.Open();
 

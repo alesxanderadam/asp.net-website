@@ -19,14 +19,13 @@ public partial class home_view_home_category : System.Web.UI.Page
     }
     protected int getCateIdParam()
     {
-        string cateId = Request.Params["id"]; // hoặc Request.QueryString["roleId"] 
+        string cateId = Request.Params["id"]; 
         int cateIdValue;
 
         if (!string.IsNullOrEmpty(cateId) && int.TryParse(cateId, out cateIdValue))
         {
             return cateIdValue;
         }
-
         // Xử lý khi ID không hợp lệ
         Response.Redirect("home.aspx");
         return 0;

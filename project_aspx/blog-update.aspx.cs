@@ -24,7 +24,7 @@ public partial class blog_update : System.Web.UI.Page
         {
             connection.Open();
 
-            SqlCommand command = new SqlCommand("SELECT name, description, category_id, title FROM [Blog] WHERE id = @blogId", connection);
+            SqlCommand command = new SqlCommand("SELECT name, description, category_id, title, user_id FROM [Blog] WHERE id = @blogId", connection);
             command.Parameters.AddWithValue("@blogId", blogId);
 
             SqlDataReader reader = command.ExecuteReader();
@@ -34,11 +34,13 @@ public partial class blog_update : System.Web.UI.Page
                 string description = reader.GetString(1);
                 int category_id = reader.GetInt32(2);
                 string title = reader.GetString(3);
+                int user_id = reader.GetInt32(4);
 
                 txtName.Text = name;
                 txtDescription.Text = description;
                 DDLCateId.Text = category_id.ToString();
                 txtTitle.Text = title;
+                DDLUserId.Text = user_id.ToString();
             }
 
             reader.Close();
@@ -61,14 +63,22 @@ public partial class blog_update : System.Web.UI.Page
 
     protected void btnFixBlog_Click(object sender, EventArgs e)
     {
+        if (!FileUploadImage.HasFile)
+        {
+            lblThongBaoAnh.Text = "Vui lòng chọn ảnh bài viết!";
+            lblThongBaoAnh.CssClass = "help-block text-danger";
+            return;
+        }
+
         string name = txtName.Text;
         string title = txtTitle.Text;
         string description = txtDescription.Text;
         string cateId = DDLCateId.Text;
         int blogId = getBlogIdParam();
+        string userId = DDLUserId.Text;
 
-        string queryUpdateHaveImage = " UPDATE [Blog] SET [name] = @name, [title] = @title, [description] = @description, [category_id] = @category_id, [image] = @image, [updated_at] = @updated_at WHERE id = @id ";
-        string queryUpdate = "UPDATE [Blog] SET [name] = @name, [title] = @title, [description] = @description, [category_id] = @category_id, [image] = @image, [updated_at] = @updated_at WHERE id = @id ";
+        string queryUpdateHaveImage = " UPDATE [Blog] SET [name] = @name, [title] = @title, [description] = @description, [category_id] = @category_id, [image] = @image, [updated_at] = @updated_at, [user_id] = @user_id WHERE id = @id ";
+        string queryUpdate = "UPDATE [Blog] SET [name] = @name, [title] = @title, [description] = @description, [category_id] = @category_id, [image] = @image, [updated_at] = @updated_at, [user_id] = @user_id WHERE id = @id ";
         string query = (FileUploadImage.HasFile) ? queryUpdateHaveImage : queryUpdate;
 
         using (SqlConnection connection = new SqlConnection("Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
@@ -82,7 +92,9 @@ public partial class blog_update : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@description", SqlDbType.NVarChar).Value = description;
                 cmd.Parameters.AddWithValue("@category_id", cateId);
                 cmd.Parameters.AddWithValue("@updated_at", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
-                
+                cmd.Parameters.AddWithValue("@user_id", userId);
+
+
                 if (FileUploadImage.HasFile)
                 {
                     string uploadedfilepath = Server.MapPath("upload/avartar/" + FileUploadImage.FileName);

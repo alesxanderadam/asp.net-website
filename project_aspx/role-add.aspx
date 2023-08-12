@@ -20,6 +20,7 @@
                                     <label class="col-md-12">Tên quyền</label>
                                     <div class="col-md-12">
                                         <asp:TextBox ID="txtRoleName" runat="server" placeholder="Tên quyền" CssClass="form-control form-control-line"></asp:TextBox>
+                                        
                                     </div>
                                 </div>
                                 <div class="form-group">

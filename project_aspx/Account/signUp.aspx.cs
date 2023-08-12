@@ -41,10 +41,6 @@ public partial class Account_signUp : System.Web.UI.Page
             // Nếu người dùng chưa tồn tại, thêm thông tin người dùng vào cơ sở dữ liệu
             AddUserToDatabase(email, password);
 
-            // Lưu thông tin đăng nhập vào cookie
-            Cookie cookie = new Cookie();
-            cookie.SetCookie(Response, "Email", email, 1);
-
             // Chuyển hướng đến trang dashboard sau khi đăng ký thành công
             Response.Redirect("~/Account/signIn.aspx?success=1");
         }

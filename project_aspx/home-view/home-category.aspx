@@ -4,11 +4,10 @@
     <asp:DataList ID="DataList1" runat="server" DataKeyField="id" DataSourceID="SqlDataSource2" Width="1500px">
         <ItemTemplate>
             <!-- Breadcrumb Start -->
-            <div class="container-fluid">
-                <div class="container">
-                    <nav class="breadcrumb bg-transparent m-0 p-0">
+            <div class="container-fluid ml-2">
+                <div class="ml-5">
+                    <nav class="breadcrumb bg-transparent ml-5 p-0">
                         <a class="breadcrumb-item" href="home.aspx">Home</a>
-                        <a class="breadcrumb-item" href="#">Danh mục</a>
                         <asp:Label ID="Label5" runat="server" CssClass="breadcrumb-item active" Text='<%# Eval("category_id") %>'></asp:Label>
                     </nav>
                 </div>
@@ -47,7 +46,8 @@
                                                         <asp:Label ID="Label3" runat="server" Text='<%# Eval("updated_at", "{0:hh:mm:ss - dd/MM/yyyy}") %>'></asp:Label>
                                                     </div>    
                                                     <asp:HyperLink ID="HyperLink3" runat="server" CssClass="h4" Text='<%# Eval("name") %>' NavigateUrl='<%# Eval("id", "~/home-view/home-single.aspx?id={0}") %>'></asp:HyperLink>
-                                                    <asp:Label ID="Label4" runat="server" CssClass="m-0" Text='<%# Eval("title") %>'></asp:Label>
+                                                    <asp:Label ID="Label4" runat="server" CssClass="m-0 mb-2" Text='<%# Eval("title") %>'></asp:Label>
+                                                    <asp:Label ID="lblViewCount" runat="server" CssClass="eye-icon w-50" Text='<%#"Lượt xem : "+ Eval("views") %>' Font-Size="small"></asp:Label>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,7 +93,8 @@
                                                             <span class="px-1">/</span>
                                                             <asp:Label ID="Label3" runat="server" Text='<%# Eval("updated_at", "{0:hh:mm:ss - dd/MM/yyyy}") %>'></asp:Label>
                                                         </div>
-                                                        <asp:HyperLink ID="HyperLink3" runat="server" CssClass="h6 m-0 content-cell" Text='<%# Eval("name") %>' NavigateUrl='<%# Eval("id", "~/home-view/home-single.aspx?id={0}") %>'></asp:HyperLink>
+                                                        <asp:HyperLink ID="HyperLink3" runat="server" CssClass="h6 m-0 mb-1 content-cell" Text='<%# Eval("name") %>' NavigateUrl='<%# Eval("id", "~/home-view/home-single.aspx?id={0}") %>'></asp:HyperLink>
+                                                        <asp:Label ID="lblViewCount" runat="server" CssClass="eye-icon w-50" Text='<%#"Lượt xem : "+ Eval("views") %>' Font-Size="small"></asp:Label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -139,17 +140,15 @@
                             <!-- Newsletter Start -->
                             <div class="pb-3">
                                 <div class="bg-light py-2 px-4 mb-3">
-                                    <h3 class="m-0">Đăng ký</h3>
+                                    <h3 class="m-0 text-center">Liên hệ</h3>
                                 </div>
                                 <div class="bg-light text-center p-4 mb-3">
-                                    <p>Đăng ký để nhận được thông báo về bảng tin mới nhất mà bạn hay theo dõi</p>
-                                    <div class="input-group" style="width: 100%;">
-                                        <input type="text" class="form-control form-control-lg" placeholder="Email của bạn">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary">Đăng ký</button>
+                                    <p>liên để nhận được thông báo về bảng tin mới nhất mà bạn hay theo dõi</p>
+                                    <div class="" style="width: 100%;">
+                                        <div class="">
+                                            <a class="btn btn-primary px-4" href="home-contact.aspx">Liên hệ</a>
                                         </div>
                                     </div>
-                                    <small>Sit eirmod nonumy kasd eirmod</small>
                                 </div>
                             </div>
                             <!-- Newsletter End -->
@@ -176,7 +175,8 @@
                                                     <span class="px-1">/</span>
                                                     <asp:Label ID="Label5" runat="server" Text='<%# Eval("updated_at", "{0:hh:mm:ss - dd/MM/yyyy}") %>'></asp:Label>
                                                 </div>
-                                                <asp:HyperLink ID="HyperLink7" runat="server" CssClass="h6 m-0" Text='<%# Eval("name") %>' NavigateUrl='<%# Eval("id", "~/home-view/home-single.aspx?id={0}") %>'></asp:HyperLink>
+                                                <asp:HyperLink ID="HyperLink7" runat="server" CssClass="h6 m-0 mb-1" Text='<%# Eval("name") %>' NavigateUrl='<%# Eval("id", "~/home-view/home-single.aspx?id={0}") %>'></asp:HyperLink>
+                                                <asp:Label ID="lblViewCount" runat="server" CssClass="eye-icon w-50" Text='<%#"Lượt xem : "+ Eval("views") %>' Font-Size="small"></asp:Label>
                                             </div>
                                         </div>
                                     </ItemTemplate>
@@ -209,22 +209,22 @@
         
    
     <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString2 %>" SelectCommand="SELECT * FROM [Category]"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString3 %>" SelectCommand="select top 1 [Blog].id, [Blog].name, [Blog].title, [Blog].description, [Category].name as category_id, [Blog].updated_at,[Blog].image FROM [Blog] INNER JOIN [Category] ON [Blog].category_id = [Category].id WHERE ([Blog].category_id = @id)">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString3 %>" SelectCommand="select top 1 [Blog].id, [Blog].name, [Blog].views, [Blog].title, [Blog].description, [Category].name as category_id, [Blog].updated_at,[Blog].image FROM [Blog] INNER JOIN [Category] ON [Blog].category_id = [Category].id WHERE ([Blog].category_id = @id)">
         <SelectParameters>
             <asp:QueryStringParameter Name="id" QueryStringField="id" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString3 %>" SelectCommand="select [Blog].id, [Blog].name, [Blog].title, [Blog].description, [Category].name as category_id, [Blog].updated_at,[Blog].image FROM [Blog] INNER JOIN [Category] ON [Blog].category_id = [Category].id WHERE ([Blog].category_id = @id) ORDER BY NEWID()">
+    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString3 %>" SelectCommand="select [Blog].id, [Blog].name, [Blog].views, [Blog].title, [Blog].description, [Category].name as category_id, [Blog].updated_at,[Blog].image FROM [Blog] INNER JOIN [Category] ON [Blog].category_id = [Category].id WHERE ([Blog].category_id = @id) ORDER BY NEWID()">
         <SelectParameters>
             <asp:QueryStringParameter Name="id" QueryStringField="id" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString3 %>" SelectCommand="select top 4 [Blog].id, [Blog].name, [Blog].title, [Blog].description, [Category].name as category_id, [Blog].updated_at,[Blog].image FROM [Blog] INNER JOIN [Category] ON [Blog].category_id = [Category].id WHERE ([Blog].category_id = @id) ORDER BY [updated_at] DESC">
+    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString3 %>" SelectCommand="select top 4 [Blog].id, [Blog].name, [Blog].views, [Blog].title, [Blog].description, [Category].name as category_id, [Blog].updated_at,[Blog].image FROM [Blog] INNER JOIN [Category] ON [Blog].category_id = [Category].id WHERE ([Blog].category_id = @id) ORDER BY [updated_at] DESC">
         <SelectParameters>
             <asp:QueryStringParameter Name="id" QueryStringField="id" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString5 %>" SelectCommand="select top 6 [Blog].id, [Blog].name, [Blog].image, [Category].name as category_id, [Blog].updated_at FROM [Blog] INNER JOIN [Category] ON [Blog].category_id = [Category].id ORDER BY NEWID()"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString5 %>" SelectCommand="select top 6 [Blog].id, [Blog].name, [Blog].views, [Blog].image, [Category].name as category_id, [Blog].updated_at FROM [Blog] INNER JOIN [Category] ON [Blog].category_id = [Category].id ORDER BY NEWID()"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString3 %>" SelectCommand="select * from [Category] WHERE ([Category].id = @id)">
         <SelectParameters>
             <asp:QueryStringParameter Name="id" QueryStringField="id" Type="Int32" />

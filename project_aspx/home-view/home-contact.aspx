@@ -49,16 +49,9 @@
                 </div>
                 <div class="col-md-7">
                     <div class="contact-form bg-light mb-3" style="padding: 30px;">
-                        <div id="success"></div>
+                        <div id="success" class="mb-4"><asp:Label ID="lblThongBao" runat="server" ></asp:Label></div>
                         <form name="sentMessage" id="contactForm" novalidate="novalidate">
                             <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="control-group">
-                                        <label class="h5 px-1">Họ tên :</label>
-                                        <asp:TextBox ID="txtName" runat="server" placeholder="Tên của bạn" CssClass="form-control p4"></asp:TextBox>
-                                        <p class="help-block text-danger"></p>
-                                    </div>
-                                </div>
                                 <div class="col-md-6">
                                     <div class="control-group">
                                         <label class="h5 px-1">Email :</label>
@@ -80,7 +73,7 @@
                             <div>
                                 <asp:Button Id="btnSend" runat="server" CssClass="btn btn-primary font-weight-semi-bold px-4" style="height: 50px;" type="submit" Text="Gửi tin nhắn" OnClick="btnSend_Click"/>
                             </div>
-                            <asp:Label ID="lblThongBao" runat="server"></asp:Label>
+                                                  
                         </form>
                     </div>
                 </div>
