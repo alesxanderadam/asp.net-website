@@ -15,7 +15,7 @@ namespace project_aspx
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection")
+            : base("Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True")
         {
         }
     }
@@ -34,7 +34,6 @@ namespace project_aspx
 {
     public static class IdentityHelper
     {
-        // Used for XSRF when linking external logins
         public const string XsrfKey = "XsrfId";
 
         public static void SignIn(UserManager manager, ApplicationUser user, bool isPersistent)
@@ -42,8 +41,10 @@ namespace project_aspx
             IAuthenticationManager authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
             authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
             var identity = manager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+
             authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         }
+
 
         public const string ProviderNameKey = "providerName";
         public static string GetProviderNameFromRequest(HttpRequest request)

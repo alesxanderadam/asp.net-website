@@ -31,7 +31,7 @@ public partial class user_add : System.Web.UI.Page
         {
             
         }
-        using (SqlConnection connection = new SqlConnection("Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
+        using (SqlConnection connection = new SqlConnection("Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
         {
             connection.Open();
             string insertQueryUser = "INSERT INTO [User]([fullname], [email], [password], [address], [role_id], [avartar], [created_at]) VALUES(@Fullname, @Email, @Password, @Address, @RoleId, @Avartar, @created_at)";

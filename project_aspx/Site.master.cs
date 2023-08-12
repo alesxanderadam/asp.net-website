@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Security.Principal;
@@ -12,6 +13,8 @@ public partial class SiteMaster : MasterPage
     private const string AntiXsrfTokenKey = "__AntiXsrfToken";
     private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
     private string _antiXsrfTokenValue;
+    protected string EmailFromCookie { get; set; }
+    protected UserModel InfoUser { get; set; } // UserModel là kiểu của đối tượng User Model
 
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -66,11 +69,30 @@ public partial class SiteMaster : MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        bool isEmailCookieExists = Request.Cookies["Email"] != null;
+        if (isEmailCookieExists)
+        {
+            string infoUserJson = Request.Cookies["InforUser"].Value;
 
+            EmailFromCookie = Request.Cookies["Email"].Value;
+            InfoUser = JsonConvert.DeserializeObject<UserModel>(infoUserJson);
+        }
+        else
+        {
+            // Không có cookie "Email", thực hiện việc hiển thị phần "Login"
+            // Nếu bạn muốn hiển thị phần "Login" trong HTML, bạn cần thay đổi phần hiển thị tương ứng.
+        }
     }
 
     protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
     {
         Context.GetOwinContext().Authentication.SignOut();
+    }
+
+    protected void Unnamed_Click(object sender, EventArgs e)
+    { Cookie cookie = new Cookie();
+        cookie.DeleteCookie(Response, "Email");
+        Response.Redirect("~/account/signin");
+
     }
 }

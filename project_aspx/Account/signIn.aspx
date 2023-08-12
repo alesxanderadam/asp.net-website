@@ -28,6 +28,12 @@
                 <h1>Đăng nhập để<br />
                     sử dụng tài khoản</h1>
 
+                <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
+                        <p class="text-danger">
+                            <asp:Literal runat="server" ID="FailureText" />
+                        </p>
+                    </asp:PlaceHolder>
+
                 <div class="login-form">
                     <form id="formLogin" runat="server">
                         <asp:TextBox ID="Email" runat="server" type="email" placeholder="Nhập email" />
@@ -41,8 +47,6 @@
                         <div class="forget-pass">
                             <a href="signUp.aspx">Đăng ký tài khoản </a>
                         </div>
-
-                        <%--<button type="submit">Đăng nhập</button>--%>
                         <asp:Button ID="submitLogin" runat="server" OnClick="submitLogin_Click" Text="Đăng nhập" />
 
                     </form>

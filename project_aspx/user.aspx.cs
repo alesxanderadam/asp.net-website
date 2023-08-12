@@ -11,10 +11,14 @@ public partial class Contact : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!Page.IsPostBack)
-        {
-            exampleGridView.DataBind();
-        }
+        //if (!IsPostBack)
+        //{
+        //    Auth auth = new Auth();
+        //    if (auth.IsInforUserCookieExists())
+        //    {
+        //        Response.Redirect("~/account/signin");
+        //    }
+        //}
     }
 
     protected void btnUpdateUse_Click(object sender, EventArgs e)
@@ -23,7 +27,6 @@ public partial class Contact : Page
         string userId = btn.CommandArgument;
 
         Response.Redirect("user-update.aspx?userId=" + userId);
-
     }
 
     protected void btnDelete_Click(object sender, EventArgs e)
@@ -31,7 +34,7 @@ public partial class Contact : Page
         Button btnDelete = sender as Button;
         int id = Convert.ToInt32(btnDelete.CommandArgument);
 
-        string connectionString = "Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True";
+        string connectionString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True";
 
         // Tạo kết nối
         using (SqlConnection connection = new SqlConnection(connectionString))
@@ -42,16 +45,13 @@ public partial class Contact : Page
             // Tạo câu lệnh SQL để chèn dữ liệu
             string sql = "DELETE [User] WHERE id = @userId";
 
-            // Tạo đối tượng SqlCommand
             using (SqlCommand command = new SqlCommand(sql, connection))
             {
-                // Thêm các tham số vào câu lệnh SQL
                 command.Parameters.AddWithValue("@userId", id);
-                // Thực thi câu lệnh SQL
                 command.ExecuteNonQuery();
             }
-            exampleGridView.DataBind();
             SqlDataSource1.DataBind();
+            TaskRepeater.DataBind();
         }
     }
 }

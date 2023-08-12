@@ -31,136 +31,144 @@
     <!-- Favicon -->
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
-      
+
 <body>
     <form runat="server">
-         <asp:scriptmanager runat="server">
-            <scripts>
+        <asp:ScriptManager runat="server">
+            <Scripts>
                 <%--to learn more about bundling scripts in scriptmanager see https://go.microsoft.com/fwlink/?linkid=301884 --%>
                 <%--framework scripts--%>
-                <asp:scriptreference path="~/plugins/bower_components/jquery/dist/jquery.min.js"/>
-                <asp:scriptreference path="~/bootstrap/dist/js/bootstrap.min.js" />
-                <asp:scriptreference path="~/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js" />
-                <asp:scriptreference path="~/js/jquery.slimscroll.js" />
-                <asp:scriptreference path="~/js/waves.js" />
-                <asp:scriptreference path="~/plugins/bower_components/waypoints/lib/jquery.waypoints.js" />
-                <asp:scriptreference path="~/plugins/bower_components/counterup/jquery.counterup.min.js" />
-                <asp:scriptreference path="~/plugins/bower_components/raphael/raphael-min.js" />
-                <asp:scriptreference path="~/plugins/bower_components/morrisjs/morris.js" />
-                <asp:scriptreference path="~/js/custom.min.js" />
-                <asp:scriptreference path="~/js/dashboard1.js" />
-                <asp:scriptreference path="~/plugins/bower_components/toast-master/js/jquery.toast.js" />
+                <asp:ScriptReference Path="~/plugins/bower_components/jquery/dist/jquery.min.js" />
+                <asp:ScriptReference Path="~/bootstrap/dist/js/bootstrap.min.js" />
+                <asp:ScriptReference Path="~/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js" />
+                <asp:ScriptReference Path="~/js/jquery.slimscroll.js" />
+                <asp:ScriptReference Path="~/js/waves.js" />
+                <asp:ScriptReference Path="~/plugins/bower_components/waypoints/lib/jquery.waypoints.js" />
+                <asp:ScriptReference Path="~/plugins/bower_components/counterup/jquery.counterup.min.js" />
+                <asp:ScriptReference Path="~/plugins/bower_components/raphael/raphael-min.js" />
+                <asp:ScriptReference Path="~/plugins/bower_components/morrisjs/morris.js" />
+                <asp:ScriptReference Path="~/js/custom.min.js" />
+                <asp:ScriptReference Path="~/js/dashboard1.js" />
+                <asp:ScriptReference Path="~/plugins/bower_components/toast-master/js/jquery.toast.js" />
                 <asp:ScriptReference Path="//cdn.ckeditor.com/4.22.1/full/ckeditor.js" />
                 <asp:ScriptReference Path="~/lib/ckfinder/ckfinder.js" />
-            </scripts>
-        </asp:scriptmanager>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="cssload-speeding-wheel"></div>
-    </div>
-    <div id="wrapper">
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top m-b-0">
-            <div class="navbar-header"> 
-                <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <div class="top-left-part">
-                    <a class="logo" href="dashboard.aspx">
-                        <b>
-                            <img src="plugins/images/pixeladmin-logo.png" alt="home" />
-                        </b>
-                        <span class="hidden-xs">
-                            <img src="plugins/images/pixeladmin-text.png" alt="home" />
-                        </span>
+            </Scripts>
+        </asp:ScriptManager>
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="cssload-speeding-wheel"></div>
+        </div>
+        <div id="wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top m-b-0">
+                <div class="navbar-header">
+                    <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse">
+                        <i class="fa fa-bars"></i>
                     </a>
+                    <div class="top-left-part">
+                        <a class="logo" href="dashboard.aspx">
+                            <b>
+                                <img src="plugins/images/pixeladmin-logo.png" alt="home" />
+                            </b>
+                            <span class="hidden-xs">
+                                <img src="plugins/images/pixeladmin-text.png" alt="home" />
+                            </span>
+                        </a>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-left m-l-20 hidden-xs">
+                        <li class="in">
+                            <div style="display: flex">
+                                <input type="text" placeholder="Search..." class="form-control" style="border: none; font-size: 13px; color: #b6b9a8; padding-left: 20px; padding-right: 40px; background: rgba(255,255,255,.9); box-shadow: none; height: 30px; font-weight: 600; width: 180px; display: inline-block; line-height: 30px; margin-top: 15px; border-radius: 40px; transition: .5s ease-out;" />
+                                <a href="task.aspx" class="active" style="position: absolute; top: 20px; right: 10px; color: #b6b9a8;">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </div>
+
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <% 
+                                bool isEmailCookieExists = Request.Cookies["Email"] != null;
+                                if (isEmailCookieExists)
+                                { %>
+                            <div class="dropdown">
+                                <a class="profile-pic dropdown-toggle" data-toggle="dropdown" href="#">
+                                 <img src="<%= ResolveUrl("~/Upload/Avartar/" + InfoUser.Avartar) %>" alt="user-img" width="36" class="img-circle" />
+                                    <b class="hidden-xs"><% = EmailFromCookie %></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="profile.html">Thông tin cá nhân</a></li>
+                                    <li><a href="../home-view/home.aspx">Tới trang web</a></li>
+                                    <li><a href="#">Thống kê công việc</a></li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <asp:Button Style="margin-left: auto; margin-right: auto; display: inherit;"
+                                            ID="logout" runat="server" OnClick="Unnamed_Click" Text="Đăng xuất" />
+                                    </li>
+                                </ul>
+                            </div>
+                            <% }
+                                else
+                                { %>
+                                    <asp:HyperLink NavigateUrl="account/signin"  ID="login" runat="server" Text="Đăng nhập" />
+                            <% } %>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="nav navbar-top-links navbar-left m-l-20 hidden-xs">
-                    <li class="in">
-                        <div style="display: flex">
-                            <input type="text" placeholder="Search..." class="form-control" style="border: none; font-size: 13px; color: #b6b9a8; padding-left: 20px; padding-right: 40px; background: rgba(255,255,255,.9); box-shadow: none; height: 30px; font-weight: 600; width: 180px; display: inline-block; line-height: 30px; margin-top: 15px; border-radius: 40px; transition: .5s ease-out;" />
-                            <a href="task.aspx" class="active" style="position: absolute; top: 20px; right: 10px; color: #b6b9a8;">
-                                <i class="fa fa-search"></i>
-                            </a>
-                        </div>
-                            
-                    </li>
-                </ul>
-                <ul class="nav navbar-top-links navbar-right pull-right">
-                    <li>
-                        <div class="dropdown">
-                            <a class="profile-pic dropdown-toggle" data-toggle="dropdown" href="#"> 
-                                <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle" />
-                                <b class="hidden-xs">Le Tran Quang Huy</b> 
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="profile.html">Thông tin cá nhân</a></li>
-                                <li><a href="../home-view/home.aspx">Tới trang web</a></li>
-                                <li><a href="#">Thống kê công việc</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Đăng xuất</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-header -->
-            <!-- /.navbar-top-links -->
-            <!-- /.navbar-static-side -->
-        </nav>
-        <!-- Left navbar-header -->
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse slimscrollsidebar">
-                <ul class="nav" id="side-menu">
-                    <li style="padding: 10px 0 0;">
-                        <a href="dashboard.aspx" class="waves-effect"><i class="fa fa-clock-o fa-fw"
+                <!-- /.navbar-header -->
+                <!-- /.navbar-top-links -->
+                <!-- /.navbar-static-side -->
+            </nav>
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+                    <ul class="nav" id="side-menu">
+                        <li style="padding: 10px 0 0;">
+                            <a href="dashboard.aspx" class="waves-effect"><i class="fa fa-clock-o fa-fw"
                                 aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a>
-                    </li>
-                    <li>
-                        <a href="user.aspx" class="waves-effect"><i class="fa fa-user fa-fw"
+                        </li>
+                        <li>
+                            <a href="user.aspx" class="waves-effect"><i class="fa fa-user fa-fw"
                                 aria-hidden="true"></i><span class="hide-menu">Thành viên</span></a>
-                    </li>
-                    <li>
-                        <a href="role.aspx" class="waves-effect"><i class="fa fa-modx fa-fw"
+                        </li>
+                        <li>
+                            <a href="role.aspx" class="waves-effect"><i class="fa fa-modx fa-fw"
                                 aria-hidden="true"></i><span class="hide-menu">Quyền</span></a>
-                    </li>
-                    <li>
-                        <a href="project.aspx" class="waves-effect"><i class="fa fa-table fa-fw"
+                        </li>
+                        <li>
+                            <a href="project.aspx" class="waves-effect"><i class="fa fa-table fa-fw"
                                 aria-hidden="true"></i><span class="hide-menu">Dự án</span></a>
-                    </li>
-                    <li>
-                        <a href="task.aspx" class="waves-effect"><i class="fa fa-table fa-fw"
+                        </li>
+                        <li>
+                            <a href="task.aspx" class="waves-effect"><i class="fa fa-table fa-fw"
                                 aria-hidden="true"></i><span class="hide-menu">Công việc</span></a>
-                    </li>
-                    <li>
-                        <a href="category.aspx" class="waves-effect"><i class="fa fa-columns fa-fw"
+                        </li>
+                        <li>
+                            <a href="category.aspx" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i><span class="hide-menu">Danh mục</span></a>
-                    </li>
-                    <li>
-                        <a href="blog.aspx" class="waves-effect"><i class="fa fa-newspaper-o fa-fw"
+                        </li>
+                        <li>
+                            <a href="blog.aspx" class="waves-effect"><i class="fa fa-newspaper-o fa-fw"
                                 aria-hidden="true"></i><span class="hide-menu">Bảng tin</span></a>
-                    </li>
-                    <%--<li>
+                        </li>
+                        <%--<li>
                         <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i><span class="hide-menu">Blank Page</span></a>
                     </li>--%>
-                    <%--<li>
+                        <%--<li>
                         <a href="404.html" class="waves-effect"><i class="fa fa-info-circle fa-fw"
                                 aria-hidden="true"></i><span class="hide-menu">Error 404</span></a>
                     </li>--%>
-                </ul>
+                    </ul>
+                </div>
             </div>
+            <!-- Left navbar-header end -->
+            <footer class="footer text-center">2023 &copy; RapXiec.com </footer>
         </div>
-        <!-- Left navbar-header end -->
-        <footer class="footer text-center"> 2023 &copy; RapXiec.com </footer>
-    </div>
-    <!-- /#page-wrapper -->
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
+        <!-- /#page-wrapper -->
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
     </form>
-<%--    <script src="//cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>--%>
-
-
-   
+    <%--    <script src="//cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>--%>
 </body>
 </html>

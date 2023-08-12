@@ -111,4 +111,4 @@ INNER JOIN [Status] ON [Task].[status_id] = [Status].[id];
 
 
 
-select * from [User];
+SELECT * FROM [User] WHERE [email] = 'ltqhuy.th0112@gmail.com' and [password] = '1234'
