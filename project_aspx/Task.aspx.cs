@@ -13,34 +13,38 @@ public partial class Task : System.Web.UI.Page
     {
 
     }
+
     protected void btnDelete_Click(object sender, EventArgs e)
     {
-        Button btnDelete = sender as Button;
-        int id = Convert.ToInt32(btnDelete.CommandArgument);
-
-        string connectionString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True";
-
-        // Tạo kết nối
-        using (SqlConnection connection = new SqlConnection(connectionString))
+        if (sender is Button btn)
         {
-            // Mở kết nối
-            connection.Open();
-
-            // Tạo câu lệnh SQL để chèn dữ liệu
-            string sql = "DELETE Task WHERE Task.id = @Id";
-
-            // Tạo đối tượng SqlCommand
-            using (SqlCommand command = new SqlCommand(sql, connection))
+            if (int.TryParse(btn.CommandArgument, out int taskId))
             {
-                // Thêm các tham số vào câu lệnh SQL
-                command.Parameters.AddWithValue("@Id", id);
-                // Thực thi câu lệnh SQL
-                command.ExecuteNonQuery();
+                DeleteTaskFromDatabase(taskId);
             }
-            TaskGridView.DataBind();
-            SqlDataSource1.DataBind();
         }
     }
+
+    public void DeleteTaskFromDatabase(int task_id)
+    {
+        string connectionString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True";
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+
+            string sql = "DELETE Task WHERE Task.id = @Id";
+
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@Id", task_id);
+                command.ExecuteNonQuery();
+            }
+            SqlDataSource1.DataBind();
+            TaskRepeater.DataBind();
+        }
+    }
+
 
     protected void Unnamed_Click(object sender, EventArgs e)
     {

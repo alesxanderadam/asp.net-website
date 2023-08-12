@@ -17,14 +17,20 @@ public partial class task_add : System.Web.UI.Page
         string taskName = txtTaskName.Text;
         string user_id = cboUserName.Text;
         string prj_id = cboPrjName.Text;
-        string connectionString = "Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True";
+        string status_id = cboStatus.Text;
+        DateTime created_at = DateTime.Now;
+
+        string connectionString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True";
 
         SqlConnection connection = new SqlConnection(connectionString);
         connection.Open();
-        string sql = "INSERT INTO task (name, project_id) VALUES (@Name, @Prj_id)";
+        string sql = "INSERT INTO [Task] ([name], [project_id], [user_id], [status_id], [created_at]) VALUES (@Name, @Prj_id, @User_id, @Status_id, @Created_at)";
         SqlCommand command = new SqlCommand(sql, connection);
         command.Parameters.AddWithValue("@Name", taskName);
         command.Parameters.AddWithValue("@Prj_id", prj_id);
+        command.Parameters.AddWithValue("@User_id", user_id);
+        command.Parameters.AddWithValue("@Status_id", status_id);
+        command.Parameters.AddWithValue("@Created_at", created_at);
 
         command.ExecuteNonQuery();
         Response.Redirect("task.aspx");

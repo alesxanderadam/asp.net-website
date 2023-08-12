@@ -22,7 +22,6 @@ public partial class Account_Login : Page
         {
             if (IsValid)
             {
-                // Validate the user password
                 var manager = new UserManager();
                 ApplicationUser user = manager.Find(UserName.Text, Password.Text);
                 if (user != null)

@@ -24,56 +24,72 @@ public partial class task_update : System.Web.UI.Page
         {
             connection.Open();
 
-            SqlCommand command = new SqlCommand("SELECT [name], [project_id] FROM [Task] WHERE id = @taskId", connection);
+            SqlCommand command = new SqlCommand(@"SELECT
+  [Task].[id],
+  [Task].[name],
+  [Project].[id] AS [Dự án],
+  [User].[id] AS [Người thực hiện],
+  [Status].[id] as [Trạng thái],
+  [Task].[created_at],
+  [Task].[updated_at]
+FROM [Task]
+INNER JOIN [Project] ON [Task].[project_id] = [Project].[id]
+INNER JOIN [User] ON [Task].[user_id] = [User].[id]
+INNER JOIN [Status] ON [Task].[status_id] = [Status].[id]
+WHERE [Task].[id] = @taskId", connection);
+
             command.Parameters.AddWithValue("@taskId", taskId);
 
             SqlDataReader reader = command.ExecuteReader();
             if (reader.HasRows && reader.Read())
             {
-                txtTaskName.Text = reader.GetString(0);
-                cboPrjName.Text = reader.GetInt32(1).ToString();
+                txtTaskName.Text = reader.GetString(reader.GetOrdinal("name"));
+                cboPrjName.SelectedValue = reader.GetInt32(reader.GetOrdinal("Dự án")).ToString();
+                cboUserName.SelectedValue = reader.GetInt32(reader.GetOrdinal("Người thực hiện")).ToString();
+                cboStatus.SelectedValue = reader.GetInt32(reader.GetOrdinal("Trạng thái")).ToString();
             }
             reader.Close();
         }
     }
 
+
     protected int getTaskIdFromParams()
     {
-        string taskId = Request.QueryString["taskId"]; // hoặc Request.QueryString["roleId"] 
+        string taskId = Request.QueryString["task_id"];
 
         if (!string.IsNullOrEmpty(taskId) && int.TryParse(taskId, out int taskIdValue))
         {
             return taskIdValue;
         }
 
-        // Xử lý khi ID không hợp lệ
         Response.Redirect("task.aspx");
         return 0;
     }
 
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
-        string name = txtTaskName.Text;
-        string prj_id = cboPrjName.Text;
-        string user_id = cboUserName.Text;
         int TaskId = getTaskIdFromParams();
+        string taskName = txtTaskName.Text;
+        string user_id = cboUserName.Text;
+        string prj_id = cboPrjName.Text;
+        string status_id = cboStatus.Text;
+        DateTime updated_at = DateTime.Now;
 
-        // Kết nối đến cơ sở dữ liệu
         using (SqlConnection connection = new SqlConnection("Data Source=MSI\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True"))
         {
             connection.Open();
 
-            // Tạo câu lệnh UPDATE
-            string query = "UPDATE Task SET name = @name, project_id = @prj_id WHERE id = @taskId";
+            string updateSql = "UPDATE [Task] SET [name] = @Name, [project_id] = @Prj_id, [user_id] = @User_id, [status_id] = @Status_id, [updated_at] = @Updated_at WHERE [id] = @taskId";
 
-            // Tạo đối tượng SqlCommand và gán giá trị cho các tham số
-            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlCommand command = new SqlCommand(updateSql, connection))
             {
-                command.Parameters.AddWithValue("@name", name);
-                command.Parameters.AddWithValue("@prj_id", prj_id);
+                command.Parameters.AddWithValue("@Name", taskName);
+                command.Parameters.AddWithValue("@Prj_id", prj_id);
+                command.Parameters.AddWithValue("@User_id", user_id);
+                command.Parameters.AddWithValue("@Status_id", status_id);
+                command.Parameters.AddWithValue("@Updated_at", updated_at);
                 command.Parameters.AddWithValue("@taskid", TaskId);
 
-                // Thực thi câu lệnh UPDATE
                 int rowsAffected = command.ExecuteNonQuery();
 
                 if (rowsAffected > 0)

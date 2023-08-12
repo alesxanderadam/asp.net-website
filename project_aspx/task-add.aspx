@@ -25,8 +25,8 @@
                                 <div class="form-group">
                                     <label class="col-md-12">Tên nhân viên</label>
                                     <div class="col-md-12">
-                                        <asp:DropDownList type="text" ID="cboUserName" runat="server" placeholder="Tên nhân viên" CssClass="form-control form-control-line" DataSourceID="SqlDataSource2" DataTextField="fullname" DataValueField="id" AutoPostBack="True"></asp:DropDownList>
-                                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_Admin %>" SelectCommand="SELECT * FROM [User]" DeleteCommand="DELETE FROM [User] WHERE [id] = @id" >
+                                        <asp:DropDownList type="text" ID="cboUserName" runat="server" placeholder="Tên nhân viên" CssClass="form-control form-control-line" DataSourceID="SqlDataSource2" DataTextField="fullname" DataValueField="id"></asp:DropDownList>
+                                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_Admin1 %>" SelectCommand="SELECT * FROM [User]" >
                                         </asp:SqlDataSource>
                                     </div>
                                 </div>
@@ -34,19 +34,18 @@
                                     <label class="col-md-12">Tên dự án</label>
                                     <div class="col-md-12">
                                         <asp:DropDownList type="text" ID="cboPrjName" runat="server" placeholder="Tên dự án" CssClass="form-control form-control-line" DataSourceID="SqlDataSource3" DataTextField="name" DataValueField="id"></asp:DropDownList>
-                                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_Admin %>" SelectCommand="SELECT * FROM [Project]" DeleteCommand="DELETE FROM [Project] WHERE [id] = @id" InsertCommand="INSERT INTO [Project] ([name], [description], [created_at], [updated_at]) VALUES (@name, @description, @created_at, @updated_at)" UpdateCommand="UPDATE [Project] SET [name] = @name, [description] = @description, [created_at] = @created_at, [updated_at] = @updated_at WHERE [id] = @id">
+                                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_Admin1 %>" SelectCommand="SELECT * FROM [Project]">
                                         </asp:SqlDataSource>
                                     </div>
                                 </div>
-                               <%-- <div class="form-group">
-                                    <label class="col-md-12">Trạng thái</label>
+                                <div class="form-group">
+                                    <label class="col-md-12">trạng thái</label>
                                     <div class="col-md-12">
-                                        <asp:DropDownList type="text" ID="cboStatus" runat="server" placeholder="Trạng thái" CssClass="form-control form-control-line" DataTextField="status" DataValueField="status">
-                                            <asp:ListItem Selected="True" Value="0">Chưa hoàn thành</asp:ListItem>
-                                            <asp:ListItem Value="1">Đã hoàn thành</asp:ListItem>
-                                        </asp:DropDownList>
+                                        <asp:DropDownList type="text" ID="cboStatus" runat="server" placeholder="Tên dự án" CssClass="form-control form-control-line" DataSourceID="SqlDataSource4" DataTextField="name" DataValueField="id"></asp:DropDownList>
+                                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_Admin1 %>" SelectCommand="SELECT * FROM [Status]">
+                                        </asp:SqlDataSource>
                                     </div>
-                                </div>--%>
+                                </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <asp:Button ID="btnSubmit" runat="server" Text="Thêm" CssClass="btn btn-success" OnClick="btnSubmit_Click" />
