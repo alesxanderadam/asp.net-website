@@ -4,6 +4,8 @@ Partial Class role_add
     Inherits System.Web.UI.Page
 
     Protected Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
+
+
         Dim roleName As String = txtRoleName.Text
         Dim description As String = txtDesc.Text
 

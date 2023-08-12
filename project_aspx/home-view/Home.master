@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> Huy Báo</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -79,7 +79,20 @@
                 clear: both;
             }
 
-        
+        .button-with-icon {
+            background: none;
+            padding:0 20px; /* Điều chỉnh khoảng cách biểu tượng từ cạnh trái */
+            background-image: url('../Upload/Avartar/magnifying-glass.png'); /* Đường dẫn đến hình ảnh biểu tượng của Font Awesome */
+            background-repeat: no-repeat;
+            background-color: #ced4da;
+            background-position: 10px center; /* Điều chỉnh vị trí của biểu tượng */
+        }
+        .eye-icon {
+            background: none;
+            background-image: url('../Upload/Avartar/eye.png'); /* Đường dẫn đến hình ảnh biểu tượng của Font Awesome */
+            background-repeat: no-repeat;
+            background-position: 75px ; /* Điều chỉnh vị trí của biểu tượng */
+        }
     </style>
 </head>
 <body>
@@ -103,7 +116,9 @@
                             </div>
                         </div>
                         <div class="col-md-4 text-right d-none d-md-block">
-                            Monday, January 01, 2045
+                 
+                            <asp:Label ID="lblNgay" CssClass="border-right border-2 px-2" runat="server" Font-Size="Large"></asp:Label>
+                            <asp:Label ID="lblCount" CssClass="px-1" runat="server" Font-Size="Large"></asp:Label>
                         </div>
                     </div>
                     <div class=" align-items-center py-2 px-lg-5">
@@ -130,6 +145,7 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
+                                <a href="home.aspx" class="nav-item nav-link">Trang chủ</a>
                                 <asp:Repeater ID="Repeater3" runat="server" DataSourceID="SqlDataSource1" >
                                     <ItemTemplate>
                                         <asp:HyperLink ID="HyperLink1" CssClass="nav-item nav-link" runat="server" Name="Name" Text='<%# Eval("Name") %>' NavigateUrl='<%# Eval("id", "~/home-view/home-category.aspx?id={0}") %>'></asp:HyperLink>
@@ -142,16 +158,11 @@
                                         <a href="#" class="dropdown-item">Bảng tin nổi bật</a>
                                     </div>
                                 </div>
-                                
-                               
                             </div>
-                            <div class="input-group ml-auto" style="width: 100%; max-width: 300px;">
-                                <input type="text" class="form-control" placeholder="Keyword">
+                            <div class="input-group mr-auto" style="width: 100%; max-width: 220px;">
+                                <asp:TextBox ID="txtFind" runat="server" CssClass="form-control" placeholder="Nhập từ khóa"></asp:TextBox>
                                 <div class="input-group-append">
-                                    <button class="input-group-text text-secondary">
-                                        <i
-                                            class="fa fa-search"></i>
-                                    </button>
+                                    <asp:Button ID="btnFind" runat="server" type="button" CssClass="button-with-icon input-group-text text-secondary" OnClick="btnFind_Click"> </asp:Button>
                                 </div>
                             </div>
                         </div>
@@ -169,7 +180,7 @@
                             <a href="home.aspx" class="navbar-brand">
                                 <img class="" src="../Upload/Image/Huybaonews.png" style="max-width: 70%;margin-bottom: 10px;" />
                             </a>
-                            <p>Volup amet magna clita tempor. Tempor sea eos vero ipsum. Lorem lorem sit sed elitr sed kasd et</p>
+                            <p>Là trang báo điện tử hàng đầu Việt Nam, chuyên cung cấp đến người xem những tin tức nổi bật và mới nhất trong ngày</p>
                             <div class="d-flex justify-content-start mt-4">
                                 <a class="btn btn-outline-secondary text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-outline-secondary text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -191,13 +202,13 @@
                         </div>
                         
                         <div class="col-lg-3 col-md-6 mb-5">
-                            <h4 class="font-weight-bold mb-4">Quick Links</h4>
+                            <h4 class="font-weight-bold mb-4">Công cụ</h4>
                             <div class="d-flex flex-column justify-content-start">
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right text-dark mr-2"></i>About</a>
-                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right text-dark mr-2"></i>Advertise</a>
+                                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right text-dark mr-2"></i>Về chúng tôi</a>
+                                <a class="text-secondary mb-2" href="home-contact.aspx"><i class="fa fa-angle-right text-dark mr-2"></i>Liên hệ quảng cáo</a>
                                 <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right text-dark mr-2"></i>Privacy & policy</a>
                                 <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right text-dark mr-2"></i>Terms & conditions</a>
-                                <a class="text-secondary" href="#"><i class="fa fa-angle-right text-dark mr-2"></i>Contact</a>
+                                <a class="text-secondary" href="home-contact.aspx"><i class="fa fa-angle-right text-dark mr-2"></i>Liên lạc</a>
                                 
                             </div>
                         </div>

@@ -3,6 +3,21 @@
 <%@ Import Namespace="System.Web.UI.HtmlControls" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <asp:DataList ID="DataList2" runat="server" DataKeyField="id" DataSourceID="SqlDataSource2" Width="1500px">
+        <ItemTemplate>
+            <!-- Breadcrumb Start -->
+            <div class="container-fluid ml-2">
+                <div class="ml-5">
+                    <nav class="breadcrumb bg-transparent ml-5 p-0">
+                        <a class="breadcrumb-item" href="home.aspx">Home</a>
+                        <asp:Label ID="Label5" runat="server" CssClass="breadcrumb-item" Text='<%# Eval("category_id") %>'></asp:Label>
+                        <asp:Label ID="Label4" runat="server" CssClass="breadcrumb-item active" Text='<%# Eval("name") %>' ForeColor="Red"></asp:Label>
+                    </nav>
+                </div>
+            </div>
+            <!-- Breadcrumb End -->
+        </ItemTemplate>
+    </asp:DataList>
     <asp:DataList ID="DataList1" runat="server" DataKeyField="id" DataSourceID="SqlDataSource2" Width="1500px" OnItemDataBound="DataList1_ItemDataBound">
         <ItemTemplate>
             <!-- News With Sidebar Start -->
@@ -12,7 +27,7 @@
                         <div class="col-lg-8">
                             <!-- News Detail Start -->
                             <div class="position-relative mb-3">
-                                <%--<img class="img-fluid w-100" src="../img/news-700x435-2.jpg" style="object-fit: cover;">--%>
+                                
                                 <asp:Image ID="Image" CssClass="img-fluid w-100" runat="server" ImageUrl='<%# ResolveUrl("~/Upload/Image/" + Eval("image"))%>' />
                                 <div class="overlay position-relative bg-light">
                                     <div class="mb-3">
@@ -21,12 +36,17 @@
                                         <asp:Label ID="Label2" runat="server" Text='<%# Eval("updated_at", "{0:hh:mm:ss - dd/MM/yyyy}") %>' ForeColor="DimGray"></asp:Label></span>
                                     </div>
                                     <div>
-                                        
-                                        <asp:Label ID="Label1" CssClass="mb-3" Font-Size="X-Large" runat="server" Text='<%# Eval("title") %>' Font-Bold="True"></asp:Label>
-                                        <br />
-
+                                        <asp:Label ID="Label6" CssClass="mb-3" Font-Size="XX-Large" runat="server" Text='<%# Eval("name") %>' Font-Bold="True"></asp:Label>
                                         <div style="margin-top: 20px">
+                                            <asp:Label ID="Label1" CssClass="mb-3 mt-3" Font-Size="Large" runat="server" Text='<%# Eval("title") %>' Font-Bold="True"></asp:Label>
+                                        </div>
+
+                                        <div style="margin-top: 10px">
                                             <asp:Literal ID="Literal1" runat="server" Text='<%# Eval("description") %>'></asp:Literal>
+                                        </div>
+                                        <div class="border-top" style="margin-top: 10px">
+                                            <asp:Label ID="Label5" runat="server" CssClass="mb-3 mt-3 float-right" Font-Size="Large" Font-Bold="true" Text='<%# Eval("user_id") %>'></asp:Label>
+                                            <i class="fa fa-eye fa-fw mt-3 px-1"></i><asp:Label ID="lblViewCount" runat="server" CssClass="mb-3 mt-3 float-left" Font-Size="small"></asp:Label>
                                         </div>
                                     </div>
                                 </div>
@@ -71,17 +91,15 @@
                             <!-- Newsletter Start -->
                             <div class="pb-3">
                                 <div class="bg-light py-2 px-4 mb-3">
-                                    <h3 class="m-0">Đăng ký</h3>
+                                    <h3 class="m-0 text-center">Liên hệ</h3>
                                 </div>
                                 <div class="bg-light text-center p-4 mb-3">
-                                    <p>Đăng ký để nhận được thông báo về bảng tin mới nhất mà bạn hay theo dõi</p>
-                                    <div class="input-group" style="width: 100%;">
-                                        <input type="text" class="form-control form-control-lg" placeholder="Email của bạn">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary">Đăng ký</button>
+                                    <p>liên để nhận được thông báo về bảng tin mới nhất mà bạn hay theo dõi</p>
+                                    <div class="" style="width: 100%;">
+                                        <div class="">
+                                            <a class="btn btn-primary px-4" href="home-contact.aspx">Liên hệ</a>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                             <!-- Newsletter End -->
@@ -178,7 +196,7 @@
         </ItemTemplate>
     </asp:DataList>
     <!-- News With Sidebar End -->
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString3 %>" SelectCommand="select [Blog].id, [Blog].name, [Blog].title, [Blog].description, [Category].name as category_id, [Blog].updated_at,[Blog].image FROM [Blog] INNER JOIN [Category] ON [Blog].category_id = [Category].id WHERE ([Blog].id = @id)">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Pixel_AdminConnectionString3 %>" SelectCommand="select [Blog].id, [Blog].name, [Blog].title, [Blog].description, [Category].name as category_id, [Blog].image, [Blog].updated_at, [Blog].views, [User].fullname as user_id FROM [Blog] INNER JOIN [Category] ON [Blog].category_id = [Category].id INNER JOIN [User] ON [Blog].user_id = [User].id WHERE ([Blog].id = @id)">
         <SelectParameters>
             <asp:QueryStringParameter Name="id" QueryStringField="id" Type="Int32" />
         </SelectParameters>

@@ -14,6 +14,13 @@ public partial class blogview_category_add : System.Web.UI.Page
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
+        if (string.IsNullOrEmpty(txtCateName.Text))
+        {
+            lblThongBao.Text = "Vui lòng nhập tên danh mục!";
+            lblThongBao.CssClass = "help-block text-danger";
+            return;
+        }
+
         string cateName = txtCateName.Text;
         string connectionString = "Data Source=TIMNGUYEN\\SQLEXPRESS;Initial Catalog=Pixel_Admin;Integrated Security=True";
 

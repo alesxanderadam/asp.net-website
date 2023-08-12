@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Web;
@@ -69,6 +70,26 @@ public partial class home_view_MasterPage : System.Web.UI.MasterPage
     }
     protected void Page_Load(object sender, EventArgs e)
     {
+        CultureInfo culture = new CultureInfo("vi-VN");
+        lblNgay.Text = DateTime.Now.ToString("dddd, dd/MM/yyyy", culture);
 
+    }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        string search = txtFind.Text;
+
+        if (!string.IsNullOrEmpty(search))
+        {
+            // Tạo URL với query string và tham số "q" chứa giá trị của TextBox "txtSearch"
+            string url = "home-search.aspx?q=" + Server.UrlEncode(search);
+
+            // Chuyển hướng đến trang "home-search.aspx" với query string chứa dữ liệu tìm kiếm
+            Response.Redirect(url);
+        }
+        else
+        {
+            Response.Redirect("home-search.aspx");
+        }
     }
 }

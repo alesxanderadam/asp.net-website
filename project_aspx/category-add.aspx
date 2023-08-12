@@ -20,6 +20,7 @@
                                     <label class="col-md-12">Tên danh mục</label>
                                     <div class="col-md-12">
                                         <asp:TextBox ID="txtCateName" runat="server" placeholder="Tên danh mục" CssClass="form-control form-control-line"></asp:TextBox>
+                                        <div class="m-2"><asp:Label ID="lblThongBao" Font-Size="Medium" ForeColor="Red" runat="server" ></asp:Label></div>
                                     </div>
                                 </div>
                                 <div class="form-group">
